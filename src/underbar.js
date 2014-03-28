@@ -102,6 +102,20 @@ var _ = { };
 
   // Produce a duplicate-free version of the array.
   _.uniq = function(array) {
+    if (array.length === 0) { return []; }
+
+    var sortedArray = array.sort();
+    var prev = sortedArray.shift();
+    var uniqArray = [prev];
+
+    _.each(sortedArray, function(item) {
+      if (item != prev) {
+        uniqArray.push(item);
+        prev = item;
+      }
+    });
+
+    return uniqArray;
   };
 
 
