@@ -224,6 +224,20 @@ var _ = { };
   // provided, provide a default one
   _.some = function(collection, iterator) {
     // TIP: There's a very clever way to re-use every() here.
+    // Invert the test function iterator, and then return the inverse of every()'s
+    // result. If every result of the inverted test is true, then every result of
+    // the original test is false and so we should return false. Otherwise, at
+    // least one of the inverted tests came back as false, which means that under
+    // the original test it is true, and so we should return true.
+    if (iterator === undefined) {
+      iterator = _.identity
+    }
+    
+    var invertedIterator = function(value) {
+      return !iterator(value);
+    }
+
+    return !(_.every(collection, invertedIterator));
   };
 
 
