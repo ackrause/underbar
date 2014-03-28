@@ -45,7 +45,7 @@ var _ = { };
   // iterator function over each item in the input collection.
   _.each = function(collection, iterator) {
     if (iterator === undefined) {
-      iterator = _.each;
+      iterator = _.identity;
     }
 
     if (Array.isArray(collection)) {
