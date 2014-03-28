@@ -45,7 +45,7 @@ var _ = { };
   // iterator function over each item in the input collection.
   _.each = function(collection, iterator) {
     if (iterator === undefined) {
-      iterator = _.each
+      iterator = _.each;
     }
 
     if (Array.isArray(collection)) {
@@ -93,8 +93,8 @@ var _ = { };
   _.reject = function(collection, test) {
     // TIP: see if you can re-use _.filter() here, without simply
     // copying code in and modifying it
-    var invertedTest = function(item) { 
-      return !test(item); 
+    var invertedTest = function(item) {
+      return !test(item);
     };
 
     return _.filter(collection, invertedTest);
@@ -180,6 +180,7 @@ var _ = { };
   //     return total + number;
   //   }, 0); // should be 6
   _.reduce = function(collection, iterator, accumulator) {
+
   };
 
   // Determine if the array or object contains a given value (using `===`).
