@@ -208,7 +208,7 @@ var _ = { };
   _.every = function(collection, iterator) {
     // TIP: Try re-using reduce() here.
     if (iterator === undefined) {
-      var iterator = _.identity;
+      iterator = _.identity;
     }
 
     return _.reduce(collection, function(allTrue, value) {
@@ -230,12 +230,12 @@ var _ = { };
     // least one of the inverted tests came back as false, which means that under
     // the original test it is true, and so we should return true.
     if (iterator === undefined) {
-      iterator = _.identity
+      iterator = _.identity;
     }
 
     var invertedIterator = function(value) {
       return !iterator(value);
-    }
+    };
 
     return !(_.every(collection, invertedIterator));
   };
