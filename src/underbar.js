@@ -260,10 +260,12 @@ var _ = { };
   //     bla: "even more stuff"
   //   }); // obj1 now contains key1, key2, key3 and bla
   _.extend = function(obj) {
+    function addKeyToObj(val, key) {
+      obj[key] = val;
+    }
+
     for (var i = 0; i < arguments.length; i++) {
-      _.each(arguments[i], function(val, key) {
-        obj[key] = val;
-      });
+      _.each(arguments[i], addKeyToObj);
     }
 
     return obj;
