@@ -329,7 +329,9 @@ var _ = { };
     var savedOutputs = {};
 
     return function(arg) {
-      savedOutputs[arg] = savedOutputs[arg] || func(arg);
+      if (!savedOutputs.hasOwnProperty(arg)) {
+        savedOutputs[arg] = func(arg);
+      }
 
       return savedOutputs[arg];
     };
