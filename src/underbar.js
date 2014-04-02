@@ -393,7 +393,6 @@ var _ = { };
   // of that string. For example, _.sortBy(people, 'name') should sort
   // an array of people by their name.
   _.sortBy = function(collection, iterator) {
-
     if (iterator === undefined) {
       iterator = _.identity;
     } else if (typeof(iterator) === 'string') {
@@ -432,11 +431,7 @@ var _ = { };
     var maxLength = Math.max.apply(this, _.pluck(arguments, 'length'));
     var zippedArr = [];
     for (var i = 0; i < maxLength; i++) {
-      var subArray = [];
-      for (var j = 0; j < arguments.length; j++) {
-        subArray.push(arguments[j][i]);
-      }
-      zippedArr[i] = subArray;
+      zippedArr[i] = _.pluck(arguments, String(i));
     }
 
     return zippedArr;
