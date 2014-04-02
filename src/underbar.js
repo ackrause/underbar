@@ -502,6 +502,19 @@ var _ = { };
   //
   // See the Underbar readme for details.
   _.throttle = function(func, wait) {
+    var result;
+    var lastCalled = 0;
+
+    return function() {
+      var now = Date.now();
+      var remaining = wait - (now - lastCalled);
+      if (remaining <= 0 || remaining > wait) {
+        lastCalled = now;
+        result = func.apply(this, arguments);
+      }
+
+      return result;
+    };
   };
 
 }).call(this);
