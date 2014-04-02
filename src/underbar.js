@@ -507,8 +507,7 @@ var _ = { };
 
     return function() {
       var now = Date.now();
-      var remaining = wait - (now - lastCalled);
-      if (remaining <= 0 || remaining > wait) {
+      if (now - lastCalled >= wait) {
         lastCalled = now;
         result = func.apply(this, arguments);
       }
